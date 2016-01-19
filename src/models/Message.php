@@ -2,7 +2,7 @@
 
 namespace yarcode\email\models;
 
-use wowkaster\serializeAttributes\SerializeAttributesBehavior;
+use baibaratsky\yii\behaviors\model\SerializedAttributes;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -57,9 +57,9 @@ class Message extends ActiveRecord
                 ],
                 'value' => new Expression('NOW()'),
             ],
-            'serialize' => [
-                'class' => SerializeAttributesBehavior::className(),
-                'convertAttr' => ['files' => 'json']
+            'serializedAttributes' => [
+                'class' => SerializedAttributes::className(),
+                'attributes' => ['files'],
             ]
         ];
     }
