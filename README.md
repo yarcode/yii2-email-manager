@@ -6,10 +6,9 @@ Simple configuration:
 
     'components' => [
         'emailManager' => [
-            'class' => 'email\EmailManager',
+            'class' => '\yarcode\email\EmailManager',
             'transports' => [
-                'yiiMailer' => '\email\transports\YiiMailer',
-                'mailGun' => 'yarcode\email\transports\'
+                'yiiMailer' => '\yarcode\email\transports\YiiMailer'
             ],
         ],
     ]
@@ -18,14 +17,14 @@ Multi transport configuration:
 
     'components' => [
         'emailManager' => [
-            'class' => 'email\EmailManager',
+            'class' => 'yarcode\email\EmailManager',
             'defaultTransport' => 'yiiMailer',
             'transports' => [
                 'yiiMailer' => [
-                    'class' => '\email\transports\YiiMailer',
+                    'class' => '\yarcode\email\transports\YiiMailer',
                 ],
                 'mailGun' => [
-                    'class' => '\email\transports\MailGun',
+                    'class' => '\yarcode\email\transports\MailGun',
                     'apiKey' => 'xxx',
                     'domain' => 'our-domain.net',
                 ],
@@ -41,7 +40,11 @@ Add command to the list of the available commands. Put it into console app confi
 
 Add email sending daemon into crontab via lockrun or run-one utils:
 
-    */5 * * * * run-one php /var/www/site/yii email/daemon
+    */5 * * * * run-one php /your/site/path/yii email/run-spool-daemon
+
+OR, if you will use cboden/ratchet
+
+    */5 * * * * run-one php /your/site/path/yii email/run-loop-daemon
 
 ## Usage ##
 
@@ -52,5 +55,5 @@ Add email sending daemon into crontab via lockrun or run-one utils:
     // queue send via default transport
     $emailManager->send('from@example.com', 'to@example.com', 'test subject', 'test email');
     // direct send via selected transport
-    $emailManager->transports['mailGun')->send('from@example.com', 'to@example.com', 'test subject', 'test email');
+    $emailManager->transports['mailGun']->send('from@example.com', 'to@example.com', 'test subject', 'test email');
 
