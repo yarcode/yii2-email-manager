@@ -27,7 +27,7 @@
     "mailgun/mailgun-php": "*",
     "yiisoft/yii2-twig": "2.0.4",
     "trntv/yii2-aceeditor": "*",
-    "wowkaster/yii2-serialize-attributes": "*"
+    "wowkaster/yii2-serialize-attributes": "dev-master"
   },
   "suggest": {
     "cboden/ratchet": "to use loop instead of for-cycle in daemon"
