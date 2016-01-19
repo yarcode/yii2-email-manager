@@ -56,4 +56,7 @@ OR, if you will use cboden/ratchet
     $emailManager->send('from@example.com', 'to@example.com', 'test subject', 'test email');
     // direct send via selected transport
     $emailManager->transports['mailGun']->send('from@example.com', 'to@example.com', 'test subject', 'test email');
+    
+    // use shortcuts
+    EmailTemplate::findByShortcut('shortcut_name')->queue('recipient@email.org', ['param1' => 1, 'param2' => 'asd']);
 
