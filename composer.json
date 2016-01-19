@@ -30,7 +30,8 @@
     "yiisoft/yii2": "~2.0.4",
     "mailgun/mailgun-php": "*",
     "yiisoft/yii2-twig": "~2.0.3",
-    "trntv/yii2-aceeditor": "*"
+    "trntv/yii2-aceeditor": "*",
+    "baibaratsky/yii2-serialized-attributes-behavior": "~1.1"
   },
   "suggest": {
     "cboden/ratchet": "to use loop instead of for-cycle in daemon"
