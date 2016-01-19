@@ -59,7 +59,7 @@ class Message extends ActiveRecord
             ],
             'serializedAttributes' => [
                 'class' => SerializedAttributes::className(),
-                'attributes' => ['files'],
+                'attributes' => ['files', 'bcc'],
             ]
         ];
     }
