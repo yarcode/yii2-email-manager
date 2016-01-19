@@ -4,7 +4,11 @@
   "license": "MIT",
   "keywords": [
     "yii2",
-    "email"
+    "email",
+    "email queue",
+    "email manager",
+    "module",
+    "component"
   ],
   "authors": [
     {
@@ -26,8 +30,7 @@
     "yiisoft/yii2": "~2.0.4",
     "mailgun/mailgun-php": "*",
     "yiisoft/yii2-twig": "2.0.4",
-    "trntv/yii2-aceeditor": "*",
-    "wowkaster/yii2-serialize-attributes": "dev-master"
+    "trntv/yii2-aceeditor": "*"
   },
   "suggest": {
     "cboden/ratchet": "to use loop instead of for-cycle in daemon"
