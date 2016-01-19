@@ -29,7 +29,7 @@
     "php": ">=5.4.0",
     "yiisoft/yii2": "~2.0.4",
     "mailgun/mailgun-php": "*",
-    "yiisoft/yii2-twig": "2.0.4",
+    "yiisoft/yii2-twig": "~2.0.3",
     "trntv/yii2-aceeditor": "*"
   },
   "suggest": {
