@@ -17,7 +17,7 @@ Multi transport configuration:
 
     'components' => [
         'emailManager' => [
-            'class' => 'yarcode\email\EmailManager',
+            'class' => '\yarcode\email\EmailManager',
             'defaultTransport' => 'yiiMailer',
             'transports' => [
                 'yiiMailer' => [
