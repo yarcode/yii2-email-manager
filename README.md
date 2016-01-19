@@ -35,7 +35,7 @@ Multi transport configuration:
 Add command to the list of the available commands. Put it into console app configuration:
 
     'controllerMap' => [
-        'email' => '\email\commands\EmailCommand',
+        'email' => '\yarcode\email\commands\EmailCommand',
     ],
 
 Add email sending daemon into crontab via lockrun or run-one utils:
