@@ -6,6 +6,7 @@
 
 namespace yarcode\email\transports;
 
+use Http\Adapter\Guzzle6\Client;
 use yarcode\email\interfaces\TransportInterface;
 use yii\base\Component;
 use yii\helpers\VarDumper;
@@ -27,7 +28,9 @@ class MailGun extends Component implements TransportInterface
         assert(isset($this->domain));
 
         parent::init();
-        $this->_api = new \Mailgun\Mailgun($this->apiKey);
+
+        $client = new Client();
+        $this->_api = new \Mailgun\Mailgun($this->apiKey, $client);
     }
 
     /**

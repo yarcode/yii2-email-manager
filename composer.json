@@ -28,9 +28,10 @@
   "require": {
     "php": ">=5.4.0",
     "yiisoft/yii2": "~2.0.4",
-    "mailgun/mailgun-php": "*",
+    "mailgun/mailgun-php": "^2.0",
     "yiisoft/yii2-twig": "~2.0.3",
-    "trntv/yii2-aceeditor": "*",
+    "trntv/yii2-aceeditor": "~2.0",
+    "php-http/guzzle6-adapter": "~1.0",
     "baibaratsky/yii2-serialized-attributes-behavior": "~1.1"
   },
   "suggest": {
