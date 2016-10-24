@@ -2,6 +2,32 @@
 
 ## Installation ##
 
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+
+```
+php composer.phar require --prefer-dist yarcode/yii2-email-manager "~0.2.*"
+```
+
+or add
+
+```
+"yarcode/yii2-email-manager": "~0.2.*"
+```
+
+to the require section of your `composer.json` file.
+
+## Migration ##
+
+Migration run
+
+```php
+php yii migrate --migrationPath=@vendor/yarcode/yii2-email-manager/src/migrations
+```
+
+## Configuration ##
+
 Simple configuration:
 
     'components' => [
