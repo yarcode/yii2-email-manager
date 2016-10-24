@@ -3,7 +3,6 @@
 namespace yarcode\email\models;
 
 use baibaratsky\yii\behaviors\model\SerializedAttributes;
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
@@ -26,7 +25,7 @@ use yii\db\Expression;
  * @property string $bcc
  * @property string $files
  */
-class Message extends ActiveRecord
+class EmailMessage extends ActiveRecord
 {
     const STATUS_NEW = 0;
     const STATUS_IN_PROGRESS = 1;

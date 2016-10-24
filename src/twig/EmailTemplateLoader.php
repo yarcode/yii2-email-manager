@@ -7,7 +7,7 @@
 namespace yarcode\email\twig;
 
 use yarcode\email\EmailManager;
-use yarcode\email\models\Template;
+use yarcode\email\models\EmailTemplate;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
 
@@ -21,8 +21,8 @@ class EmailTemplateLoader extends Component implements \Twig_LoaderInterface
         $currentLanguage = \Yii::$app->language;
         $defaultLanguage = ArrayHelper::getValue(EmailManager::getInstance()->languages, 0, 'en-US');
 
-        /** @var Template $model */
-        $model = Template::find()->where(['shortcut' => $name])
+        /** @var EmailTemplate $model */
+        $model = EmailTemplate::find()->where(['shortcut' => $name])
             ->andWhere('language = :currentLanguage OR language = :defaultLanguage OR language = :systemDefaultLanguage', [
                 ':currentLanguage' => $currentLanguage,
                 ':defaultLanguage' => $defaultLanguage,

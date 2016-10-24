@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var yarcode\email\models\Template $model
+ * @var yarcode\email\models\EmailTemplate $model
  */
 
 $this->title = 'Update Email Template: ' . ' ' . $model->id;

@@ -6,7 +6,7 @@ use React\EventLoop\Factory;
 use yii\console\Controller;
 use yii\db\Expression;
 use yarcode\email\EmailManager;
-use yarcode\email\models\Message;
+use yarcode\email\models\EmailMessage;
 
 /**
  * @author Alexey Samoylov <alexey.samoylov@gmail.com>
@@ -81,23 +81,23 @@ class EmailCommand extends Controller
 
         $transaction = $db->beginTransaction();
         try {
-            $id = $db->createCommand('SELECT id FROM {{%email_message}} WHERE status=:status ORDER BY priority DESC, id ASC LIMIT 1 FOR UPDATE', [
-                'status' => Message::STATUS_NEW,
+            $id = $db->createCommand('SELECT id FROM {{%email_EmailMessage}} WHERE status=:status ORDER BY priority DESC, id ASC LIMIT 1 FOR UPDATE', [
+                'status' => EmailMessage::STATUS_NEW,
             ])->queryScalar();
 
             if ($id === false) {
-                $transaction->rollback();
+                $transaction->rollBack();
                 return false;
             }
 
-            /** @var Message $model */
-            $model = Message::findOne($id);
-            $model->status = Message::STATUS_IN_PROGRESS;
+            /** @var EmailMessage $model */
+            $model = EmailMessage::findOne($id);
+            $model->status = EmailMessage::STATUS_IN_PROGRESS;
             $model->updateAttributes(['status']);
 
             $transaction->commit();
         } catch (\Exception $e) {
-            $transaction->rollback();
+            $transaction->rollBack();
             throw $e;
         }
 
@@ -114,15 +114,15 @@ class EmailCommand extends Controller
             );
             if ($result) {
                 $model->sentAt = new Expression('NOW()');
-                $model->status = Message::STATUS_SENT;
+                $model->status = EmailMessage::STATUS_SENT;
             } else {
-                $model->status = Message::STATUS_ERROR;
+                $model->status = EmailMessage::STATUS_ERROR;
             }
 
             $model->updateAttributes(['sentAt', 'status']);
             $transaction->commit();
         } catch (\Exception $e) {
-            $transaction->rollback();
+            $transaction->rollBack();
             throw $e;
         }
 
