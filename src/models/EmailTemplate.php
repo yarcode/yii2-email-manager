@@ -4,7 +4,6 @@ namespace yarcode\email\models;
 
 use yarcode\email\EmailManager;
 use yarcode\email\twig\EmailTemplateLoader;
-use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\VarDumper;
 
@@ -21,7 +20,7 @@ use yii\helpers\VarDumper;
  * @property string $text
  * @property string $language
  */
-class Template extends ActiveRecord
+class EmailTemplate extends ActiveRecord
 {
     public $params = [];
 
@@ -36,24 +35,24 @@ class Template extends ActiveRecord
     /**
      * @param string $shortcut
      * @param string $language
-     * @return Template
+     * @return self
      */
     public static function findByShortcut($shortcut, $language = null)
     {
         $manager = EmailManager::getInstance();
-
+	    $languageCode = $language;
         foreach ([$language, $manager->defaultLanguage, 'en-US'] as $l) {
             $template = static::findOne([
                 'shortcut' => $shortcut,
                 'language' => $l,
             ]);
-
+	        $languageCode = $l;
             if ($template) {
                 return $template;
             }
         }
 
-        throw new \BadMethodCallException('Template not found: ' . VarDumper::dumpAsString($shortcut) . ', language ' . $l);
+        throw new \BadMethodCallException('Template not found: ' . VarDumper::dumpAsString($shortcut) . ', language ' . $languageCode);
     }
 
     /**

@@ -28,6 +28,7 @@
   "require": {
     "php": ">=5.4.0",
     "yiisoft/yii2": "~2.0.4",
+    "react/event-loop": "~0.4",
     "mailgun/mailgun-php": "^2.0",
     "yiisoft/yii2-twig": "~2.0.3",
     "trntv/yii2-aceeditor": "~2.0",

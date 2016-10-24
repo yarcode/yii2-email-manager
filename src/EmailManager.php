@@ -9,7 +9,7 @@ namespace yarcode\email;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yarcode\email\interfaces\TransportInterface;
-use yarcode\email\models\Message;
+use yarcode\email\models\EmailMessage;
 
 class EmailManager extends Component implements TransportInterface
 {
@@ -73,7 +73,7 @@ class EmailManager extends Component implements TransportInterface
             $bcc = implode(', ', $bcc);
         }
 
-        $model = new Message();
+        $model = new EmailMessage();
         $model->from = $from;
         $model->to = $to;
         $model->subject = $subject;

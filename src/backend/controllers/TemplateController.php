@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yarcode\email\models\Template;
+use yarcode\email\models\EmailTemplate;
 
 /**
  * @author Alexey Samoylov <alexey.samoylov@gmail.com>
@@ -40,7 +40,7 @@ class TemplateController extends Controller
      */
     public function actionTest($shortcut, $language)
     {
-        Template::loadTemplate($shortcut, $language)->queue(\Yii::$app->params['adminEmail']);
+        EmailTemplate::loadTemplate($shortcut, $language)->queue(\Yii::$app->params['adminEmail']);
 
         return $this->redirect(['index']);
     }
@@ -52,7 +52,7 @@ class TemplateController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Template::find(),
+            'query' => EmailTemplate::find(),
         ]);
 
         return $this->render('index', [
@@ -79,7 +79,7 @@ class TemplateController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Template();
+        $model = new EmailTemplate();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'id' => $model->id]);
@@ -126,12 +126,12 @@ class TemplateController extends Controller
      * Finds the Template model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Template the loaded model
+     * @return EmailTemplate the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Template::findOne($id)) !== null) {
+        if (($model = EmailTemplate::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
